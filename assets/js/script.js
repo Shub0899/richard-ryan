@@ -1,19 +1,13 @@
 'use strict';
 
-
-
-// add Event on multiple elment
-
+// add Event on multiple elements
 const addEventOnElements = function (elements, eventType, callback) {
   for (let i = 0; i < elements.length; i++) {
     elements[i].addEventListener(eventType, callback);
   }
 }
 
-
-
 // PRELOADING
-
 const loadingElement = document.querySelector("[data-loading]");
 
 window.addEventListener("load", function () {
@@ -21,37 +15,31 @@ window.addEventListener("load", function () {
   document.body.classList.remove("active");
 });
 
+// MOBILE NAV TOGGLE - commented out to disable the navbar
+// const [navTogglers, navLinks, navbar, overlay] = [
+//   document.querySelectorAll("[data-nav-toggler]"),
+//   document.querySelectorAll("[data-nav-link]"),
+//   document.querySelector("[data-navbar]"),
+//   document.querySelector("[data-overlay]")
+// ];
 
+// const toggleNav = function () {
+//   navbar.classList.toggle("active");
+//   overlay.classList.toggle("active");
+//   document.body.classList.toggle("active");
+// }
 
-// MOBILE NAV TOGGLE
+// addEventOnElements(navTogglers, "click", toggleNav);
 
-const [navTogglers, navLinks, navbar, overlay] = [
-  document.querySelectorAll("[data-nav-toggler]"),
-  document.querySelectorAll("[data-nav-link]"),
-  document.querySelector("[data-navbar]"),
-  document.querySelector("[data-overlay]")
-];
+// const closeNav = function () {
+//   navbar.classList.remove("active");
+//   overlay.classList.remove("active");
+//   document.body.classList.remove("active");
+// }
 
-const toggleNav = function () {
-  navbar.classList.toggle("active");
-  overlay.classList.toggle("active");
-  document.body.classList.toggle("active");
-}
-
-addEventOnElements(navTogglers, "click", toggleNav);
-
-const closeNav = function () {
-  navbar.classList.remove("active");
-  overlay.classList.remove("active");
-  document.body.classList.remove("active");
-}
-
-addEventOnElements(navLinks, "click", closeNav);
-
-
+// addEventOnElements(navLinks, "click", closeNav);
 
 // HEADER
-
 const header = document.querySelector("[data-header]");
 
 const activeElementOnScroll = function () {
@@ -64,12 +52,9 @@ const activeElementOnScroll = function () {
 
 window.addEventListener("scroll", activeElementOnScroll);
 
-
-
 /**
  * TEXT ANIMATION EFFECT FOR HERO SECTION
  */
-
 const letterBoxes = document.querySelectorAll("[data-letter-effect]");
 
 let activeLetterBoxIndex = 0;
@@ -83,9 +68,9 @@ const setLetterEffect = function () {
     // set initial animation delay
     let letterAnimationDelay = 0;
 
-    // get all character from the current letter box
+    // get all characters from the current letter box
     const letters = letterBoxes[i].textContent.trim();
-    // remove all character from the current letter box
+    // remove all characters from the current letter box
     letterBoxes[i].textContent = "";
 
     // loop through all letters
@@ -108,7 +93,7 @@ const setLetterEffect = function () {
       // pass current letter into span
       span.textContent = letters[j];
 
-      // add space class on span, when current letter contain space
+      // add space class on span, when current letter contains space
       if (letters[j] === " ") span.classList.add("space");
 
       // pass the span on current letter box
@@ -132,7 +117,6 @@ const setLetterEffect = function () {
     } else {
       letterBoxes[i].classList.remove("active");
     }
-
   }
 
   setTimeout(function () {
@@ -149,12 +133,9 @@ const setLetterEffect = function () {
 // call the letter effect function after window loaded
 window.addEventListener("load", setLetterEffect);
 
-
-
 /**
  * BACK TO TOP BUTTON
  */
-
 const backTopBtn = document.querySelector("[data-back-top-btn]");
 
 window.addEventListener("scroll", function () {
@@ -173,12 +154,9 @@ window.addEventListener("scroll", function () {
   }
 });
 
-
-
 /**
  * SCROLL REVEAL
  */
-
 const revealElements = document.querySelectorAll("[data-reveal]");
 
 const scrollReveal = function () {
@@ -197,12 +175,9 @@ window.addEventListener("scroll", scrollReveal);
 
 scrollReveal();
 
-
-
 /**
  * CUSTOM CURSOR
  */
-
 const cursor = document.querySelector("[data-cursor]");
 const anchorElements = document.querySelectorAll("a");
 const buttons = document.querySelectorAll("button");
@@ -215,7 +190,7 @@ document.body.addEventListener("mousemove", function (event) {
   }, 100);
 });
 
-// add cursor hoverd class
+// add cursor hovered class
 const hoverActive = function () { cursor.classList.add("hovered"); }
 
 // remove cursor hovered class
@@ -232,7 +207,7 @@ document.body.addEventListener("mouseout", function () {
   cursor.classList.add("disabled");
 });
 
-// remove diabled class on cursorElement, when mouse in the body
+// remove disabled class on cursorElement, when mouse in the body
 document.body.addEventListener("mouseover", function () {
   cursor.classList.remove("disabled");
 });
